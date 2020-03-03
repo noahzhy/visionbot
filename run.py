@@ -44,8 +44,6 @@ def do_analysis(frame):
     fall_cancel = 0.4
     fall_count = 0
 
-    # cv2.namedWindow(window_name, flags=cv2.WINDOW_FREERATIO)
-
     def fall_or_not():
         global FLAG_FALL
         global VIDEO_GETTING
@@ -57,9 +55,10 @@ def do_analysis(frame):
                 if (res[0] == 0 and res[1] > 0.92):
                     FLAG_FALL = True
                     # print(window_name, 'fall: {}'.format(res[1]))
+                    cv2.putText(frame, 'Status: Fall', (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 2)
+                    
                     if not VIDEO_GETTING:
                         VIDEO_GETTING = True
-
                         try:
                             path_to_file = video.get_video(list(frames), 'output')
                             if upload.upload(path_to_file) == 200:
