@@ -9,7 +9,7 @@ config = ConfigParser()
 config.read(config_file, encoding='UTF-8')
 local_version = config['update_config']['version']
 domain = config['update_config']['domain']
-update_file = config['update_config']['updateFile']
+update_file = config['update_config']['update_file']
 
 class Update():
     def __init__(self):
