@@ -1,4 +1,4 @@
-# version 1.0.2
+# version 1.0.3
 from collections import deque
 import multiprocessing as mp
 import _thread as thr
