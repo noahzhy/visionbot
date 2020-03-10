@@ -1,6 +1,7 @@
 import os
 import requests
 import json
+import time
 from configparser import ConfigParser
 
 
@@ -11,19 +12,32 @@ local_version = config['update_config']['version']
 domain = config['update_config']['domain']
 update_file = config['update_config']['update_file']
 
+
+def check_network():
+    exit_code = os.system('ping www.google.co.kr')
+    if exit_code == 0:
+        return True
+    else:
+        time.sleep(30)
+        return False
+
+
 class Update():
     def __init__(self):
         version = local_version
         updateFile = []
         try:
+            while check_network():
+                break
             url = 'http://{}/{}'.format(domain, update_file)
             sess = requests.Session()
-            r = sess.post(url=url, timeout=180)
+            r = sess.post(url=url, timeout=10)
             if r.status_code == 200:
                 j = r.json()
                 version = j['version']
                 if len(j['updateFile']) > 0:
                     updateFile = j['updateFile']
+
         except Exception as e:
             print(e)
 
@@ -80,3 +94,5 @@ if __name__ == "__main__":
         run()
 
     os.system('python3 main.py')
+
+    # print(check_network())
