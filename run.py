@@ -9,12 +9,12 @@ config = ConfigParser()
 config.read(config_file, encoding='UTF-8')
 local_version = config['update_config']['version']
 domain = config['update_config']['domain']
-update_file = config['update_config']['update_file']
+update_file = config['update_config']['updateFile']
 
 class Update():
     def __init__(self):
         version = local_version
-        file_list = []
+        updateFile = []
         try:
             url = 'http://{}/{}'.format(domain, update_file)
             sess = requests.Session()
@@ -22,13 +22,13 @@ class Update():
             if r.status_code == 200:
                 j = r.json()
                 version = j['version']
-                if len(j['file_list']) > 0:
-                    file_list = j['file_list']
+                if len(j['updateFile']) > 0:
+                    updateFile = j['updateFile']
         except Exception as e:
             print(e)
 
         self.version = version
-        self.file_list = file_list
+        self.updateFile = updateFile
 
     def get_newest_version(self):
         return self.version
