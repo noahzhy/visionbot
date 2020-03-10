@@ -34,7 +34,7 @@ class Update():
         return self.version
 
     def get_file_list(self):
-        return self.file_list
+        return self.updateFile
 
 
 def download_files(file_list):
