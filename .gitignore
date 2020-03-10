@@ -1,4 +1,2 @@
-output/*
-test.py
-test2.py
 __pycache__/*
+output/*
