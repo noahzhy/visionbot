@@ -14,11 +14,15 @@ update_file = config['update_config']['update_file']
 
 
 def check_network():
-    exit_code = os.system('ping www.google.co.kr')
-    if exit_code == 0:
-        return True
-    else:
-        time.sleep(30)
+    try:
+        sess = requests.Session()
+        url = 'http://{}/{}'.format(domain, update_file)
+        r = sess.post(url=url, timeout=10)
+        if r.status_code == 200:
+            return True
+        else:
+            return False
+    except Exception as e:
         return False
 
 
@@ -27,8 +31,12 @@ class Update():
         version = local_version
         updateFile = []
         try:
-            while check_network():
-                break
+            while True:
+                if check_network():
+                    print('network connected!')
+                    break
+                time.sleep(15)
+
             url = 'http://{}/{}'.format(domain, update_file)
             sess = requests.Session()
             r = sess.post(url=url, timeout=10)
