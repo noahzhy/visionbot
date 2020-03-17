@@ -39,7 +39,7 @@ sudo sh -c "echo [daemon] > /etc/gdm3/custom.conf"
 sudo sh -c "echo AutomaticLoginEnable = true >> /etc/gdm3/custom.conf"
 sudo sh -c "echo AutomaticLogin = 10moons >> /etc/gdm3/custom.conf"
 echo "------------------autostart------------------"
-sudo sh -c "echo 'cd /home/10moons/FD-Nano/ && python3 run.py' > /home/10moons/run.sh"
+sudo sh -c "echo 'cd /home/10moons/visionbot/ && python3 run.py' > /home/10moons/run.sh"
 sudo chmod +x /home/10moons/run.sh
 if [ ! -d "/home/10moons/.config/autostart/" ]; then
   mkdir /home/10moons/.config/autostart/
@@ -49,14 +49,14 @@ sudo sh -c "echo '[Desktop Entry]\nName=auto_run\nType=Application\nExec=bash /h
 echo "-----------------update code-----------------"
 cd /home/10moons/
 if [ -d "/home/10moons/FD-Nano/" ]; then
-  cd /home/10moons/FD-Nano && git pull
-  sudo rm -rf *.txt
-  echo ' ' > fall_{0:04d}.txt
-else
-  git clone https://github.com/noahzhy/FD-Nano.git
-  cd /home/10moons/FD-Nano
-  sudo mv fall_0001.txt fall_{0:04d}.txt
+  sudo rm -rf /home/10moons/FD-Nano/
 fi
+if [ -d "/home/10moons/visionbot/" ]; then
+  sudo rm -rf /home/10moons/visionbot/
+fi
+sudo -u 10moons git clone https://github.com/noahzhy/visionbot.git
+cd /home/10moons/visionbot/
+sudo mv fall_0001.txt fall_{0:04d}.txt
 echo "-----------------all finish------------------"
         '''.format(i))
 
