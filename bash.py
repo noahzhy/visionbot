@@ -63,6 +63,5 @@ echo "-----------------all finish------------------"
 
 if __name__ == "__main__":
     run()
-
-# scp /path/filename username@servername:/path   
+  
 # wget -qO- http://222.109.16.122/install_0001.sh | sudo sh
