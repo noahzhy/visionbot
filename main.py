@@ -53,7 +53,7 @@ def do_analysis(frame):
                 pass
             else:
                 res = pre.prediction(data)
-                if (res[0] == 0 and res[1] > 0.92):
+                if (res[0] == 0 and res[1] > 0.89):
                     FLAG_FALL = True
                     # print(window_name, 'fall: {}'.format(res[1]))
                     cv2.putText(frame, 'Status: Fall', (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 2)

@@ -26,7 +26,7 @@ python3 -m pip install numpy==1.16.0
 python3 -m pip install requests
 # python3 -m pip install python3-nmap
 python3 -m pip install python-nmap
-wget -O tensorflow-1.10.1-cp36-cp36m-linux_aarch64.whl "http://222.109.16.122/tensorflow-1.10.1-cp36-cp36m-linux_aarch64.whl"
+wget -O tensorflow-1.10.1-cp36-cp36m-linux_aarch64.whl "http://192.168.5.147/tensorflow-1.10.1-cp36-cp36m-linux_aarch64.whl"
 pip3 install tensorflow-1.10.1-cp36-cp36m-linux_aarch64.whl
 echo "--------------install completed--------------"
 cd /home/10moons/
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     run()
   
 # wget -qO- http://222.109.16.122/install_0001.sh | sudo sh
-wget -qO- http://visiongo.ai/ops/install_0030.sh | sudo sh
+# wget -qO- http://visiongo.ai/ops/install_0030.sh | sudo sh
